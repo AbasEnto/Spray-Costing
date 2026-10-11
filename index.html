@@ -61,10 +61,13 @@
       width:100%;
       max-width:var(--maxwidth);
       display:grid;
-      grid-template-columns: 1fr 360px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
       gap:20px;
       align-items:start;
     }
+    /* Keep the calculator and all information panels in their intended columns. */
+    .wrapper > main.card { grid-column: 1; min-width: 0; }
+    .wrapper > aside.side { grid-column: 2; min-width: 0; }
     .card{
       background: var(--card);
       border-radius: var(--radius);
@@ -154,7 +157,8 @@
     }
     footer.app-footer #visitorCounter img{transform:scale(1.3)}
     @media (max-width:980px){
-      .wrapper{grid-template-columns:1fr}
+      .wrapper{grid-template-columns:minmax(0, 1fr)}
+      .wrapper > main.card, .wrapper > aside.side { grid-column: 1; }
     }
   </style>
 </head>
@@ -260,28 +264,21 @@
         </footer>
       </main>
 
-      <!-- SIDEBAR -->
+      <!-- SIDEBAR: all informational panels belong inside this single aside. -->
       <aside class="side">
-        <p class="small">
-    The Apple Orchard Spray Cost Calculator is a free online
-    tool developed by ICAR-Central Institute of Temperate
-    Horticulture, Srinagar, India, for estimating pesticide
-    spray costs in apple orchards.
-
-    The calculator estimates insecticide material costs,
-    machinery operation costs, labour charges, and total
-    pesticide application costs based on orchard area,
-    planting system, and tree age.
-
-    It supports traditional, medium-density, and high-density
-    apple orchards and provides cost estimates per kanal
-    and for the total orchard area.
-
-    The calculation methodology includes depreciation,
-    fuel consumption, repairs, maintenance, and labour costs,
-    based on the ICAR-CITH technical bulletin published in 2025.
-  </p>
-</div>
+        <div class="panel">
+          <h3>About the Apple Orchard Spray Cost Calculator</h3>
+          <p class="small">
+            The Apple Orchard Spray Cost Calculator is a free online tool developed by
+            ICAR-Central Institute of Temperate Horticulture, Srinagar, India, for
+            estimating pesticide spray costs in apple orchards. It calculates
+            insecticide material, machinery operating and labour costs according
+            to orchard area, planting system and tree age. It supports traditional,
+            medium-density and high-density apple orchards and provides spray
+            application cost estimates per kanal and for the total orchard area.
+            The methodology is based on the ICAR-CITH technical bulletin (2025).
+          </p>
+        </div>
         <div class="panel">
           <h3>Basic Assumptions</h3>
           <ul class="small" id="assumptions-list">
