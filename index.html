@@ -1,26 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- 1. Corrected Structured Data for Site Name -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apple Orchard Pesticide Spray Cost Calculator | ICAR-CITH</title>
+  <meta name="description" content="Online calculator to estimate pesticide material, machinery, labour and total spray application costs in apple orchards by planting density, tree age and orchard area. Developed by ICAR-CITH Srinagar." />
+  <link rel="canonical" href="https://abasento.github.io/Spray-Costing/" />
+
+  <!-- Search-engine structured data: describes the existing public calculator. -->
   <script type="application/ld+json">
   {
-    "@context" : "https://schema.org",
-    "@type" : "WebSite",
-    "name" : "ICAR-CITH Spray Costing",
-    "url" : "https://abasento.github.io/Spray-Costing/"
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "ICAR-CITH Spray Costing",
+        "url": "https://abasento.github.io/Spray-Costing/"
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Apple Orchard Pesticide Spray Cost Calculator",
+        "url": "https://abasento.github.io/Spray-Costing/",
+        "description": "Estimate pesticide material costs and spray application costs in traditional, medium-density and high-density apple orchards using orchard age, area and machinery operating cost assumptions.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "isAccessibleForFree": true,
+        "publisher": {
+          "@type": "Organization",
+          "name": "ICAR-Central Institute of Temperate Horticulture, Srinagar"
+        }
+      }
+    ]
   }
   </script>
 
-  <!-- 2. Corrected Canonical Link (Must be outside the script tag) -->
-  <link rel="canonical" href="https://abasento.github.io/Spray-Costing/" />
-
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ICAR Apple Orchard Spray Cost Calculator</title>
-
   <style>
     :root{
-      --bg: #87ceeb; /* sky blue background */
+      --bg: #87ceeb;
       --card: #ffffff;
       --accent: #7c3aed;
       --muted: #444;
@@ -41,7 +57,6 @@
       color:var(--text);
       padding:24px;
     }
-
     .wrapper{
       width:100%;
       max-width:var(--maxwidth);
@@ -50,14 +65,12 @@
       gap:20px;
       align-items:start;
     }
-
     .card{
       background: var(--card);
       border-radius: var(--radius);
       padding:20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
-
     /* HEADER SECTION */
     .page-header {
       display: flex;
@@ -67,10 +80,8 @@
       padding: 10px 20px;
       border-radius: var(--radius);
     }
-    .page-header img {
-      height: 60px;
-    }
-    .page-header h1 {
+    .page-header img {height:60px}
+    .page-header .institute-heading {
       margin: 0;
       font-size: 20px;
       font-weight: 700;
@@ -83,7 +94,6 @@
       border-radius: 4px;
       margin: 10px 0 20px 0;
     }
-
     header.app-header{
       display:flex;
       gap:12px;
@@ -97,21 +107,18 @@
     }
     h1{margin:0;font-size:18px}
     p.lead{margin:4px 0 0 0;color:var(--muted);font-size:13px}
-
     form .row{display:flex;gap:10px;align-items:center;margin-top:8px}
     label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
     select,input[type="number"]{
       width:100%;padding:10px;border-radius:10px;border:1px solid #ccc;
       background: #f9f9f9; color:var(--text); font-size:14px;
     }
-
     .controls{display:flex;gap:10px;margin-top:12px}
     button.btn{
       padding:10px 14px;border-radius:10px;border:none;background:var(--accent);color:white;
       font-weight:600;cursor:pointer;
     }
     button.ghost{background:transparent;border:1px solid #aaa; color:var(--muted)}
-
     .result {
       margin-top:12px;
       padding:14px;border-radius:10px;background: #f2f8ff;
@@ -120,53 +127,47 @@
     .big{font-size:26px;font-weight:700}
     .muted{color:var(--muted);font-size:13px}
     .breakdown{font-size:13px;color:var(--muted);margin-top:8px;display:none}
-
-    aside.side {
-      display:flex;flex-direction:column;gap:12px;
-    }
+    aside.side {display:flex;flex-direction:column;gap:12px}
     .panel{padding:14px;border-radius:10px;background:#fdfdfd;border:1px solid #ccc}
     .panel h3{margin:0 0 8px 0;font-size:14px;color:#003366}
     .small{font-size:14px;color:var(--muted)}
-
-    /* FOOTER SECTION */
-    hr.divider {
-      border: none;
-      border-top: 2px solid #005a2a;
-      margin: 20px 0;
-    }
+    /* FOOTER SECTION — moved here from the incorrectly nested second HTML document. */
+    hr.divider {border:none;border-top:2px solid #005a2a;margin:20px 0}
     footer.app-footer{
       grid-column:1 / -1;
       text-align:center;
       color:var(--muted);
-      font-size:14px;
+      font-size:13px;
       display:flex;
       flex-direction:column;
       align-items:center;
       gap:12px;
     }
-    footer.app-footer #disclaimerText {
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.4;
+    footer.app-footer .footer-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+    footer.app-footer button.footer-btn{
+      padding:8px 12px;border:none;border-radius:8px;background:var(--accent);color:white;
+      font-weight:600;cursor:pointer;font-size:13px;
     }
-
+    footer.app-footer .footer-content{
+      display:none;max-width:800px;background:#f2f8ff;padding:10px;
+      border-radius:10px;border:1px solid #ccc;text-align:left;line-height:1.4;
+    }
+    footer.app-footer #visitorCounter img{transform:scale(1.3)}
     @media (max-width:980px){
       .wrapper{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
-
   <div class="container" style="width:100%;max-width:var(--maxwidth);margin:auto;">
     <!-- TOP HEADER -->
     <div class="page-header">
       <img src="logo.jpg" alt="ICAR Logo" />
-      <h1>ICAR-Central Institute of Temperate Horticulture, Srinagar</h1>
+      <h2 class="institute-heading">ICAR-Central Institute of Temperate Horticulture, Srinagar</h2>
       <img src="apple.png" alt="Apple Image" />
     </div>
 
     <div class="ribbon"></div>
-
     <div class="wrapper">
       <!-- MAIN CALCULATOR -->
       <main class="card" role="main" aria-labelledby="appTitle">
@@ -174,226 +175,170 @@
           <div class="logo">ICAR</div>
           <div>
             <h1 id="appTitle">Apple Orchard Spray Cost Calculator (beta version)</h1>
-            <p class="lead">Estimate pesticide material & application cost per kanal</p>
-             <p class="lead">(Mention of specific pesticide formulations should not be regarded as recommendation of use)</p>
+            <p class="lead">Estimate pesticide material &amp; application cost per kanal</p>
+            <p class="lead">(Mention of specific pesticide formulations should not be regarded as recommendation of use)</p>
           </div>
         </header>
-
         <form id="calcForm" onsubmit="return false;">
           <div>
             <label for="system">Orchard system</label>
             <select id="system"></select>
           </div>
-
           <div>
             <label for="age">Tree age group</label>
             <select id="age"></select>
           </div>
-
           <div>
             <label for="insecticide">Insecticide</label>
             <select id="insecticide"></select>
           </div>
-
           <div class="row">
             <div style="flex:1">
               <label for="area">Area to estimate</label>
-              <input id="area" type="number" value="1" min="0.1" step="0.1" /> 
+              <input id="area" type="number" value="1" min="0.1" step="0.1" />
               <div class="muted" style="margin-top:6px">Area in kanal</div>
             </div>
-
             <div style="width:160px">
               <label for="method">Fixed cost method</label>
               <select id="method">
-                <option value="ASA">ASA&BE</option>
+                <option value="ASA">ASA&amp;BE</option>
                 <option value="SL">Straight-Line</option>
               </select>
             </div>
           </div>
-
           <div class="controls">
             <button class="btn" id="calcBtn" type="button">Calculate</button>
             <button class="ghost" id="resetBtn" type="button">Reset</button>
           </div>
-
           <div id="results" class="result" aria-live="polite">
             <div><span class="muted">Material cost (Rs.)</span><div class="big" id="materialVal">—</div></div>
             <div style="margin-top:8px"><span class="muted">Application cost (Rs.)</span><div class="big" id="applicationVal">—</div></div>
             <div style="margin-top:8px"><span class="muted">Total cost (Rs.)</span><div class="big" id="totalVal">—</div></div>
-
             <button class="btn" id="toggleBreakdownBtn" type="button" style="margin-top:10px;background:#3b82f6">See Detailed Breakdown</button>
             <div class="breakdown" id="breakdownBox"></div>
           </div>
         </form>
 
-        <!-- Divider line before footer -->
-        <hr class="divider">
+        <!-- Divider and FOOTER: one valid footer inside the existing main card. -->
+        <hr class="divider" />
+        <footer class="app-footer">
+          <div class="footer-buttons">
+            <button class="footer-btn" type="button" data-target="developed">Developed by</button>
+            <button class="footer-btn" type="button" data-target="copyright">Copyright</button>
+            <button class="footer-btn" type="button" data-target="disclaimer">Disclaimer</button>
+            <button class="footer-btn" type="button" data-target="contact">Contact Us</button>
+          </div>
 
-        <!-- FOOTER -->
-       <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ICAR Orchard Spray Cost Calculator</title>
-<style>
-:root{
---bg: #87ceeb;
---card: #ffffff;
---accent: #7c3aed;
---muted: #444;
---text: #000;
---radius: 12px;
---maxwidth: 980px;
-font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-font-size: 15px;
-}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--text);padding:24px;}
-.wrapper{width:100%;max-width:var(--maxwidth);display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start;}
-.card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.2);}
-hr.divider{border:none;border-top:2px solid #005a2a;margin:20px 0;}
-footer.app-footer{grid-column:1 / -1;text-align:center;color:var(--muted);font-size:13px;display:flex;flex-direction:column;align-items:center;gap:12px;}
-footer.app-footer .footer-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
-footer.app-footer button.footer-btn{padding:8px 12px;border:none;border-radius:8px;background:var(--accent);color:white;font-weight:600;cursor:pointer;font-size:13px;}
-footer.app-footer .footer-content{display:none;max-width:800px;background:#f2f8ff;padding:10px;border-radius:10px;border:1px solid #ccc;text-align:left;line-height:1.4;}
-footer.app-footer #visitorCounter img{transform:scale(1.3);}
-</style>
-</head>
-<body>
-<footer class="app-footer">
-<div class="footer-buttons">
-<button class="footer-btn" data-target="developed">Developed by</button>
-<button class="footer-btn" data-target="copyright">Copyright</button>
-<button class="footer-btn" data-target="disclaimer">Disclaimer</button>
-<button class="footer-btn" data-target="contact">Contact Us</button>
-</div>
-
-
-<div id="developed" class="footer-content">
-<strong>Developed by:</strong><br>Dr. M. Abas Shah, Scientist, Agricultural Entomology, ICAR-Central Institute of Temperate Horticulture, Srinagar
-</div>
-
-
-<div id="copyright" class="footer-content">
-  © 2025 ICAR–Central Institute of Temperate Horticulture, Srinagar. All Rights Reserved.
-  <br><br>
-  This calculator and its underlying code are protected by copyright and intended for academic, research, and extension use only.  
-  Unauthorized commercial use or reproduction is prohibited. This calculator is distributed under the Creative Commons Attribution–NonCommercial 4.0 International License (CC BY-NC 4.0).
-  <br><br>
-  <a href="https://github.com/AbasEnto/Cost-of-Pesticide-Spray-in-Apple-Orchards/blob/main/LICENSE.txt"
-     target="_blank"
-     style="color:#3b82f6; text-decoration:none; font-weight:600;">
-     🔗 View License Terms
-  </a>
-</div>
-
-
-<div id="disclaimer" class="footer-content">
-The Publisher or authors have no responsibility for the persistence or accuracy of URLs for external or third-party internet websites referred to in this calculator, and does not guarantee that any content on such websites is, or will remain, accurate or appropriate. No liability whatsoever is accepted for use of the content in this calculator. Though all efforts have been made to keep the content of this publication accurate and up to date, the same should not be construed as a statement of law or used for any legal purpose.
-</div>
-
-
-<div id="contact" class="footer-content">
-Director, ICAR-Central Institute of Temperate Horticulture, KD Farm, Old Air field, Rangreth-191132, Srinagar, UT of J&K, India<br>
-Phone: 0194-2305044<br>
-Fax: 0194-2305045<br>
-Email: dircithsgr@icar.org.in
-</div>
-
-
-<div id="visitorCounter">
-<img src="https://hits.sh/abasento.github.io/Cost-of-Pesticide-Spray-in-Apple-Orchards.svg?style=flat-square&label=visits&color=blue" alt="Visitor counter"/>
-</div>
-</footer>
-<script>
-document.querySelectorAll('.footer-btn').forEach(btn => {
-btn.addEventListener('click', function() {
-const targetId = this.getAttribute('data-target');
-const content = document.getElementById(targetId);
-const isVisible = content.style.display === 'block';
-document.querySelectorAll('.footer-content').forEach(div => div.style.display = 'none');
-if(!isVisible) content.style.display = 'block';
-});
-});
-</script>
-</body>
-</html>
+          <div id="developed" class="footer-content">
+            <strong>Developed by:</strong><br />Dr. M. Abas Shah, Scientist, Agricultural Entomology, ICAR-Central Institute of Temperate Horticulture, Srinagar
+          </div>
+          <div id="copyright" class="footer-content">
+            © 2025 ICAR–Central Institute of Temperate Horticulture, Srinagar. All Rights Reserved.
+            <br /><br />
+            This calculator and its underlying code are protected by copyright and intended for academic, research, and extension use only.
+            Unauthorized commercial use or reproduction is prohibited. This calculator is distributed under the Creative Commons Attribution–NonCommercial 4.0 International License (CC BY-NC 4.0).
+            <br /><br />
+            <a href="https://github.com/AbasEnto/Spray-Costing/blob/main/LICENSE.txt"
+               target="_blank" rel="noopener noreferrer"
+               style="color:#3b82f6; text-decoration:none; font-weight:600;">
+              🔗 View License Terms
+            </a>
+          </div>
+          <div id="disclaimer" class="footer-content">
+            The Publisher or authors have no responsibility for the persistence or accuracy of URLs for external or third-party internet websites referred to in this calculator, and does not guarantee that any content on such websites is, or will remain, accurate or appropriate. No liability whatsoever is accepted for use of the content in this calculator.
+            Though all efforts have been made to keep the content of this publication accurate and up to date, the same should not be construed as a statement of law or used for any legal purpose.
+          </div>
+          <div id="contact" class="footer-content">
+            Director, ICAR-Central Institute of Temperate Horticulture, KD Farm, Old Air field, Rangreth-191132, Srinagar, UT of J&amp;K, India<br />
+            Phone: 0194-2305044<br />
+            Fax: 0194-2305045<br />
+            Email: dircithsgr@icar.org.in
+          </div>
+          <div id="visitorCounter">
+            <img src="https://hits.sh/abasento.github.io/Cost-of-Pesticide-Spray-in-Apple-Orchards.svg?style=flat-square&amp;label=visits&amp;color=blue" alt="Visitor counter" />
+          </div>
+        </footer>
       </main>
 
-    <!-- SIDEBAR -->
-<aside class="side">
-  <div class="panel">
-    <h3>Basic Assumptions</h3>
-    <ul class="small" id="assumptions-list">
-      <li>Spray costs consist of two components: insecticide material cost and spray application cost (fixed + variable).</li>
-      <li>Spray volume per kanal is taken as 60 L for 1–5 yr old plants, 100 L for 5–10 yr old plants, 160 L for 10–20 yr old plants, and 300 L for >20 yr old plants in case of traditional orchards.</li>
-      <li>In medium-density orchards, spray volume per kanal is taken as 111 L for 1–2 yr old plants, 222 L for 2–5 yr old plants, and 444 L for >5 yr old plants.</li>
-      <li>In high-density orchards, spray volume per kanal is taken as 167 L for 1–2 yr old plants, 250 L for 2–5 yr old plants, and 418 L for >5 yr old plants.</li> 
-      <li>Insecticide dosages follow label, CIB&RC, and SKUAST-K advisories; costs based on lowest bulk market prices as of June 1, 2024.</li>
-      <li>Use of a company or product name does not imply approval or recommendation of the product to the exclusion of others that also may be suitable.</li>
-      <li>Power sprayer specifications: 6.5 HP petrol engine, 200 ft pipe, 10-year life, ₹35,000 purchase price, ₹33,000 current list price, average use of 10 sprays per season, 10 kanal orchard and 100 hrs annual use.</li>
-      <li>Depreciation calculated by ASA&BE and Straight-Line methods; salvage value 10% (Straight-Line) or 50% at 5 years (ASA&BE).</li>
-      <li>Interest rate: 8% (real) derived from 13% nominal minus 5% inflation.</li>
-      <li>TIH: 3% of average machine value annually (1% tax, 0.5% insurance, 1.5% housing).</li>
-      <li>Variable costs include repairs (10% of purchase price per year), fuel, lubrication, and labour.</li>
-      <li>Fuel consumption: 1.48 L/hr (petrol @ ₹100.31/L); lubrication: 15% of fuel cost.</li>
-      <li>Labour: Two workers @ ₹700/day each, adjusted +20% for non-field time.</li>
-      <li>Spray efficiency: Two labour units can spray 200 L/hr; cost = ₹210/hr total.</li>
-      <li>Orchards classified based on spray volume needed for labour requirement: Type I (<200 L/kanal) and Type II (200–450 L/kanal).</li>
-      <li>Equipment and water available near orchard; no rental or transport downtime included.</li>
-    </ul>
-    <a href="#" id="toggle-points" style="display:block; margin-top:5px;">Read More</a>
-  </div>
+      <!-- SIDEBAR -->
+      <aside class="side">
+        <div class="panel">
+          <h3>Basic Assumptions</h3>
+          <ul class="small" id="assumptions-list">
+            <li>Spray costs consist of two components: insecticide material cost and spray application cost (fixed + variable).</li>
+            <li>Spray volume per kanal is taken as 60 L for 1–5 yr old plants, 100 L for 5–10 yr old plants, 160 L for 10–20 yr old plants, and 300 L for &gt;20 yr old plants in case of traditional orchards.</li>
+            <li>In medium-density orchards, spray volume per kanal is taken as 111 L for 1–2 yr old plants, 222 L for 2–5 yr old plants, and 444 L for &gt;5 yr old plants.</li>
+            <li>In high-density orchards, spray volume per kanal is taken as 167 L for 1–2 yr old plants, 250 L for 2–5 yr old plants, and 418 L for &gt;5 yr old plants.</li>
+            <li>Insecticide dosages follow label, CIB&amp;RC, and SKUAST-K advisories; costs based on lowest bulk market prices as of June 1, 2024.</li>
+            <li>Use of a company or product name does not imply approval or recommendation of the product to the exclusion of others that also may be suitable.</li>
+            <li>Power sprayer specifications: 6.5 HP petrol engine, 200 ft pipe, 10-year life, ₹35,000 purchase price, ₹33,000 current list price, average use of 10 sprays per season, 10 kanal orchard and 100 hrs annual use.</li>
+            <li>Depreciation calculated by ASA&amp;BE and Straight-Line methods; salvage value 10% (Straight-Line) or 50% at 5 years (ASA&amp;BE).</li>
+            <li>Interest rate: 8% (real) derived from 13% nominal minus 5% inflation.</li>
+            <li>TIH: 3% of average machine value annually (1% tax, 0.5% insurance, 1.5% housing).</li>
+            <li>Variable costs include repairs (10% of purchase price per year), fuel, lubrication, and labour.</li>
+            <li>Fuel consumption: 1.48 L/hr (petrol @ ₹100.31/L); lubrication: 15% of fuel cost.</li>
+            <li>Labour: Two workers @ ₹700/day each, adjusted +20% for non-field time.</li>
+            <li>Spray efficiency: Two labour units can spray 200 L/hr; cost = ₹210/hr total.</li>
+            <li>Orchards classified based on spray volume needed for labour requirement: Type I (&lt;200 L/kanal) and Type II (200–450 L/kanal).</li>
+            <li>Equipment and water available near orchard; no rental or transport downtime included.</li>
+          </ul>
+          <a href="#" id="toggle-points" style="display:block; margin-top:5px;">Read More</a>
+        </div>
         <div class="panel">
           <h3>Reference</h3>
           <div class="small">
-            Shah, M. A., Tramboo, H. A., Rehman, S. A., Parvez, B., Nabi, S. U., Raja, W. H., Malik, G., Jaiswal, R., Mir, J. I., Sharma, O. C., & Verma, M. K. (2025).
-            Estimation of the cost of insecticide application in apple orchards (Reference No. CITH/PME/2025/02, Edition 01, p. 28). 
-            ICAR-Central Institute of Temperate Horticulture, Srinagar, J&K, India.
+            Shah, M. A., Tramboo, H. A., Rehman, S. A., Parvez, B., Nabi, S. U., Raja, W. H., Malik, G., Jaiswal, R., Mir, J. I., Sharma, O. C., &amp; Verma, M. K. (2025).
+            Estimation of the cost of insecticide application in apple orchards (Reference No. CITH/PME/2025/02, Edition 01, p. 28).
+            ICAR-Central Institute of Temperate Horticulture, Srinagar, J&amp;K, India.
           </div>
         </div>
-
         <div class="panel">
           <h3>Further Reading</h3>
-          <a href="technical-bulletin.pdf" target="_blank">Detailed Technical Bulletin (PDF)</a>
+          <a href="technical-bulletin.pdf" target="_blank" rel="noopener noreferrer">Detailed Technical Bulletin (PDF)</a>
         </div>
       </aside>
     </div>
   </div>
 
+  <!-- Existing calculator logic stays in the original app.js file. -->
   <script src="app.js"></script>
+  <script>
+    // Footer tabs (preserved from the current site).
+    document.querySelectorAll('.footer-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const targetId = this.getAttribute('data-target');
+        const content = document.getElementById(targetId);
+        const isVisible = content.style.display === 'block';
+        document.querySelectorAll('.footer-content').forEach(div => { div.style.display = 'none'; });
+        if (!isVisible) content.style.display = 'block';
+      });
+    });
+
+    // Expand/collapse the Basic Assumptions list (preserved from the current site).
+    document.addEventListener('DOMContentLoaded', function () {
+      const list = document.querySelectorAll('#assumptions-list li');
+      const toggleLink = document.getElementById('toggle-points');
+      const initialVisible = 7;
+      let expanded = false;
+      list.forEach((li, index) => {
+        if (index >= initialVisible) li.style.display = 'none';
+      });
+      toggleLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        expanded = !expanded;
+        if (expanded) {
+          list.forEach((li, index) => {
+            if (index >= initialVisible) li.style.display = 'list-item';
+          });
+          toggleLink.textContent = 'Read Less';
+        } else {
+          list.forEach((li, index) => {
+            if (index >= initialVisible) li.style.display = 'none';
+          });
+          toggleLink.textContent = 'Read More';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const list = document.querySelectorAll('#assumptions-list li');
-  const toggleLink = document.getElementById('toggle-points');
-  const initialVisible = 7;
-  let expanded = false;
-
-  // Hide items beyond the first 7
-  list.forEach((li, index) => {
-    if(index >= initialVisible) li.style.display = 'none';
-  });
-
-  toggleLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    expanded = !expanded;
-
-    if(expanded) {
-      // Show remaining points
-      list.forEach((li, index) => {
-        if(index >= initialVisible) li.style.display = 'list-item';
-      });
-      toggleLink.textContent = 'Read Less';
-    } else {
-      // Collapse back to first 7
-      list.forEach((li, index) => {
-        if(index >= initialVisible) li.style.display = 'none';
-      });
-      toggleLink.textContent = 'Read More';
-    }
-  });
-});
-</script>
